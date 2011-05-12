@@ -50,7 +50,7 @@ module Abseiler
     # config.active_record.identity_map = true
 
     # Enable the asset pipeline
-    config.assets.enabled = true
+    config.assets.enabled = false
 
     config.generators do |g|
       g.helper false
