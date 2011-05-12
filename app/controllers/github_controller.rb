@@ -80,12 +80,12 @@ class GithubController < ApplicationController
 
   def metadata
     metadata_hash = {
-      name: "Github Profile Information",
-      description: "Gives you some information from your contact's Github Profile",
+      name: "Github",
+      description: "Shows some basic statistics from and a link to your contacts' Github Profile.",
       welcome_text: "",
       icon_url: "",
-      small_icon_url: "",
-      preview_url: "",
+      small_icon_url: "http://github.com/favicon.ico",
+      preview_url: "https://abseiler.heroku.com/github/preview.png",
       provider_name: "Lenary",
       provider_url: "http://lenary.co.uk/",
       data_provider_name: "Github Inc.",
