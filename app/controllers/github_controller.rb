@@ -83,9 +83,14 @@ class GithubController < ApplicationController
   def metadata
     metadata_hash = {
       name: "Github",
-      description: "Shows some basic statistics from and a link to your contacts' Github Profile.",
-      welcome_text: "",
-      icon_url: "",
+      description: "Shows some basic statistics from and a link to your contacts' Github Profiles.",
+      welcome_text: <<-WELCOME,
+      <img src="https://abseiler.heroku.com/github/icon.png" class="provider-logo"/>
+      <p><strong>Github - Secure source code hosting and collaborative development</strong></p>
+
+      <p>This Github Raplet shows some basic statistics from your contacts' Github Profiles as well as a link to them.</p>
+      WELCOME
+      icon_url: "https://abseiler.heroku.com/github/icon.png",
       small_icon_url: "https://github.com/favicon.ico",
       preview_url: "https://abseiler.heroku.com/github/preview.png",
       provider_name: "Lenary",
