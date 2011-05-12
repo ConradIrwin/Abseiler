@@ -1,21 +1,15 @@
 require File.expand_path('../boot', __FILE__)
 
-require 'rails/all'
+require "action_controller/railtie"
 
 # If you have a Gemfile, require the gems listed there, including any gems
 # you've limited to :test, :development, or :production.
 Bundler.require(:default, Rails.env) if defined?(Bundler)
 
+require 'rack/contrib/jsonp'
+
 module Abseiler
   class Application < Rails::Application
-  config.generators do |g|
-  
-  
-  
-  g.helper false
-  g.fixture false
-end
-
     # Settings in config/environments/* take precedence over those specified here.
     # Application configuration should go into files in config/initializers
     # -- all .rb files in that directory are automatically loaded.
@@ -53,9 +47,16 @@ end
     config.filter_parameters += [:password]
 
     # Enable IdentityMap for Active Record, to disable set to false or remove the line below.
-    config.active_record.identity_map = true
+    # config.active_record.identity_map = true
 
     # Enable the asset pipeline
     config.assets.enabled = true
+
+    config.generators do |g|
+      g.helper false
+      g.fixture false
+    end
+
+    config.middleware.use Rack::JSONP
   end
 end

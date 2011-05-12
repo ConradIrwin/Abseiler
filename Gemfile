@@ -2,10 +2,14 @@ source 'http://rubygems.org'
 
 gem 'rails', '3.1.0.beta1'
 
+gem "rack-contrib", :git => "https://github.com/rack/rack-contrib.git", :branch => "master"
+
+gem "octopi", :git => "https://github.com/lenary/octopi.git", :branch => "master"
+
 # Bundle edge Rails instead:
 # gem 'rails',     :git => 'git://github.com/rails/rails.git'
 
-gem 'sqlite3'
+# gem 'sqlite3'
 
 # Asset template engines
 gem 'sass'
