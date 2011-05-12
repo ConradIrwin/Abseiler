@@ -19,6 +19,7 @@ class GithubController < ApplicationController
           height:16px;
           width:16px;
           padding:4px;
+          margin-left:2px;
         }
         .github img {
           height:22px;
@@ -28,6 +29,7 @@ class GithubController < ApplicationController
           -webkit-border-radius:3px;
           -moz-border-radius:3px;
           border-radius:3px;
+          margin-left:2px;
         }
         .github:hover img{
           border-color: transparent;
@@ -84,7 +86,7 @@ class GithubController < ApplicationController
       description: "Shows some basic statistics from and a link to your contacts' Github Profile.",
       welcome_text: "",
       icon_url: "",
-      small_icon_url: "http://github.com/favicon.ico",
+      small_icon_url: "https://github.com/favicon.ico",
       preview_url: "https://abseiler.heroku.com/github/preview.png",
       provider_name: "Lenary",
       provider_url: "http://lenary.co.uk/",
