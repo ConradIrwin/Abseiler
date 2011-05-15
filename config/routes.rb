@@ -1,9 +1,10 @@
 Abseiler::Application.routes.draw do
 
+  # we need to revisit how this works, because it currently doesn't
   Abseiler::RapletRegistry.each do |short_name, klass|
-    get "#{short_name}/info" => klass.action(:info)
+    get "r/#{short_name}" => klass.action(:info)
   end
 
-  get "github/info" => GithubRaplet.action(:info)
-  # we need to revisit how this works.
+  get "r/github" => GithubRaplet.action(:info)
+
 end
