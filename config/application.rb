@@ -6,8 +6,6 @@ require "action_controller/railtie"
 # you've limited to :test, :development, or :production.
 Bundler.require(:default, Rails.env) if defined?(Bundler)
 
-require 'rack/contrib/jsonp'
-
 module Abseiler
   class Application < Rails::Application
     # Settings in config/environments/* take precedence over those specified here.
@@ -50,7 +48,7 @@ module Abseiler
     # config.active_record.identity_map = true
 
     # Enable the asset pipeline
-    config.assets.enabled = false
+    config.assets.enabled = true
 
     config.generators do |g|
       g.helper false
@@ -60,3 +58,5 @@ module Abseiler
     config.middleware.use Rack::JSONP
   end
 end
+
+require 'abseiler'

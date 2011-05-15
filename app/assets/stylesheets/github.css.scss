@@ -4,4 +4,60 @@
   You can use Sass (SCSS) here: http://sass-lang.com/
 */
 
+.collapsed {
+  font-weight: bold;
+  line-height: 24px;
 
+  img {
+    height:16px;
+    margin-left:2px;
+    padding:4px;
+    width:16px;
+  }
+}
+.github img {
+  -moz-border-radius:3px;
+  -webkit-border-radius:3px;
+  border-radius:3px;
+  border:1px solid transparent;
+  height:22px;
+  margin-left:2px;
+  padding:0;
+  width:22px;
+}
+.github:hover img{
+  border-color: transparent;
+}
+a.github {
+  color: #A0A0A0;
+  display: block;
+  font-size: 1.5em;
+  font-weight: bold;
+  line-height: 30px;
+  margin-bottom: 0;
+  margin-top: 0;
+}
+a.github:hover {
+  color: #404040;
+}
+img {
+  vertical-align: middle;
+}
+.num {
+  display: block;
+  font-size: 32px;
+  font-weight: bold;
+  text-align: center;
+}
+.caption {
+  display: block;
+  font-size: 9px;
+  margin-top: -8px;
+  text-align: center;
+}
+.stats {
+  display: block;
+  float: left;
+  margin: 0 5px 5px;
+  width: 94px;
+}
