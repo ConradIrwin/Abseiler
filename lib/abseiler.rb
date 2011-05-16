@@ -3,7 +3,7 @@ module Abseiler
   autoload :Raplet,         "abseiler/raplet"
   autoload :RapletConfig,   "abseiler/raplet_config"
 
-  mattr_accessor :registry, :instance_reader => false
+  mattr_accessor :registry
   self.registry = {}
 
   def self.add(short_name, klass)
