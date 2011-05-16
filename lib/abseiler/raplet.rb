@@ -10,7 +10,7 @@ class Abseiler::Raplet < Abseiler::AbstractRaplet
 
 
   # the info action. this is all that is really used...
-  def info
+  def raplet
     respond_with({
       status:200,
       sections: [
