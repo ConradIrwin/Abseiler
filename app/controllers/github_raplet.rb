@@ -9,8 +9,6 @@ class GithubRaplet < Abseiler::Raplet
 
   include Octopi
 
-  before_filter :find_user
-
   private
 
   def find_user

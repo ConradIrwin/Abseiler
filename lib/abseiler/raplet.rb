@@ -1,6 +1,8 @@
 class Abseiler::Raplet < Abseiler::AbstractRaplet
   respond_to :json
+
   before_filter :metadata
+  before_filter :find_user
 
   class << self
     def short_name(sname=nil)
@@ -78,6 +80,10 @@ class Abseiler::Raplet < Abseiler::AbstractRaplet
     end
 
     respond_with(metadata_hash) and return false
+  end
+
+  def find_user
+    raise NotImplementedError, "Define find_user to set user params"
   end
 
   def short_name
