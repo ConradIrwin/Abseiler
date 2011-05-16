@@ -1,7 +1,7 @@
 Abseiler::Application.routes.draw do
 
   # we need to revisit how this works, because it currently doesn't
-  Abseiler::RapletRegistry.each do |short_name, klass|
+  Abseiler.registry.each do |short_name, klass|
     get "r/#{short_name}" => klass.action(:info)
   end
 
