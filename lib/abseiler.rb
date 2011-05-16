@@ -1,6 +1,7 @@
 module Abseiler
   autoload :AbstractRaplet, "abseiler/abstract_raplet"
   autoload :Raplet,         "abseiler/raplet"
+  autoload :RapletConfig,   "abseiler/raplet_config"
 
   mattr_accessor :registry, :instance_reader => false
   self.registry = {}
