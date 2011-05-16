@@ -1,7 +1,7 @@
 class Abseiler::Raplet < Abseiler::AbstractRaplet
   respond_to :json
 
-  before_filter :metadata
+  before_filter :show_metadata
   before_filter :find_user
 
   cattr_accessor :metadata
@@ -71,7 +71,7 @@ class Abseiler::Raplet < Abseiler::AbstractRaplet
 
   protected
 
-  def metadata
+  def show_metadata
     return true unless params[:show] == "metadata"
 
     default_metadata_hash = {
