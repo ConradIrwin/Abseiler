@@ -1,12 +1,10 @@
 class Abseiler::Raplet < Abseiler::AbstractRaplet
-  respond_to :json
-
-  before_filter :show_metadata
-  before_filter :find_user
-
   include Abseiler::RapletConfig
 
+  respond_to :json
 
+  before_filter :show_metadata, :only => [:info]
+  before_filter :find_user,     :only => [:info]
 
 
   # the info action. this is all that is really used...
