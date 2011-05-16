@@ -1,3 +1,4 @@
+# gem "octopi", "~> 0.4.3"
 require "abseiler"
 class GithubRaplet < Abseiler::Raplet
   short_name      :github

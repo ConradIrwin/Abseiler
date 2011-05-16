@@ -1,15 +1,4 @@
 GIT
-  remote: https://github.com/lenary/octopi.git
-  revision: 8787a75
-  branch: master
-  specs:
-    octopi (0.4.2)
-      api_cache
-      httparty (>= 0.4.5)
-      mechanize (>= 0.9.3)
-      nokogiri (>= 1.3.1)
-
-GIT
   remote: https://github.com/rack/rack-contrib.git
   revision: 9f5bcdd
   branch: master
@@ -84,6 +73,11 @@ GEM
     mime-types (1.16)
     multi_json (1.0.1)
     nokogiri (1.4.4)
+    octopi (0.4.4)
+      api_cache
+      httparty (>= 0.4.5)
+      mechanize (>= 0.9.3)
+      nokogiri (>= 1.3.1)
     polyglot (0.3.1)
     rack (1.3.0.beta)
     rack-cache (1.0.1)
@@ -142,7 +136,7 @@ PLATFORMS
 DEPENDENCIES
   coffee-script
   jquery-rails
-  octopi!
+  octopi (~> 0.4.3)
   rack-contrib!
   rails (= 3.1.0.beta1)
   ruby-debug19

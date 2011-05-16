@@ -6,8 +6,7 @@ gem "rack-contrib", :require => 'rack/contrib/jsonp',
                     :git => "https://github.com/rack/rack-contrib.git",
                     :branch => "master"
 
-gem "octopi", :git => "https://github.com/lenary/octopi.git",
-              :branch => "master"
+gem "octopi", "~> 0.4.3"
 
 
 # Asset template engines
