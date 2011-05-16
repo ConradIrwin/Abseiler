@@ -74,8 +74,6 @@ class Abseiler::Raplet < Abseiler::AbstractRaplet
   def metadata
     return true unless params[:show] == "metadata"
 
-    debugger
-
     default_metadata_hash = {
       name:           short_name.capitalize,
       description:    "",
