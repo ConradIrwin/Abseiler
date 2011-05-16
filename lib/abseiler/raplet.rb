@@ -4,6 +4,9 @@ class Abseiler::Raplet < Abseiler::AbstractRaplet
   before_filter :metadata
   before_filter :find_user
 
+  cattr_accessor :metadata
+  self.metadata = {}.with_indifferent_access
+
   class << self
     def short_name(sname=nil)
       if sname
@@ -17,25 +20,36 @@ class Abseiler::Raplet < Abseiler::AbstractRaplet
     [
       :name, :description, :icon_url, :small_icon_url, :preview_url,
       :provider_name, :provider_url, :data_provider_name, :data_provider_url
-    ].each do |meth|
+    ].each do |metadata_meth|
       module_eval(<<-EVAL, __FILE__, __LINE__)
-        def #{meth}(new_#{meth}=nil)
-          metadata(:"#{meth}", new_#{meth})
+        def #{metadata_meth}(new_#{metadata_meth}=nil)
+          metadata_dsl(:"#{metadata_meth}", new_#{metadata_meth})
+        end
+      EVAL
+    end
+
+    [:provider, :data_provider].each do |quick_md_meth|
+      module_eval(<<-EVAL, __FILE__, __LINE__)
+        def #{quick_md_meth}(new_name=nil, new_url=nil)
+          metadata_dsl(:"#{quick_md_meth}_name", new_name)
+          metadata_dsl(:"#{quick_md_meth}_url",  new_url)
+          return metadata_hash.select do |k,v|
+            ["#{quick_md_meth}_name", "#{quick_md_meth}_url"].include? k
+          end
         end
       EVAL
     end
 
     def metadata_hash
-      @@metadata
+      self.metadata
     end
 
     protected
-    def metadata(key, value=nil)
-      @@metadata ||= {}.with_indifferent_access
+    def metadata_dsl(key, value=nil)
       if value == nil
-        @@metadata[key]
+        self.metadata[key]
       else
-        @@metadata[key] = value
+        self.metadata[key] = value
       end
     end
   end

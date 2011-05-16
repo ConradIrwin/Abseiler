@@ -3,9 +3,7 @@ class GithubRaplet < Abseiler::Raplet
   short_name      :github
   description     "Shows some basic statistics from and a link to your contacts' Github Profiles."
   small_icon_url  "https://github.com/favicon.ico"
-
-  data_provider_name  "Github Inc."
-  data_provider_url   "http://github.com"
+  data_provider   "Github Inc.", "http://github.com"
 
   include Octopi
 
