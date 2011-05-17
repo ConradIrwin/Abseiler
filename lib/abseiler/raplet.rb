@@ -3,8 +3,8 @@ class Abseiler::Raplet < Abseiler::AbstractRaplet
 
   respond_to :json
 
-  before_filter :show_metadata, :only => [:info]
-  before_filter :find_user,     :only => [:info]
+  before_filter :show_metadata, :only => [:raplet]
+  before_filter :find_user,     :only => [:raplet]
 
 
   # the info action. this is all that is really used...
