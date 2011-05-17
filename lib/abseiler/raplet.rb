@@ -60,6 +60,6 @@ class Abseiler::Raplet < Abseiler::AbstractRaplet
   end
 
   def raplet_asset(name)
-    Rails.application.assets.find_asset(name)
+    Rails.application.assets.find_asset(name).to_s
   end
 end
