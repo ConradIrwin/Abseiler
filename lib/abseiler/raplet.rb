@@ -13,12 +13,12 @@ class Abseiler::Raplet < Abseiler::AbstractRaplet
       status:200,
       sections: [
         {
-          expanded_html:  render_to_string(:expanded),
-          collapsed_html: render_to_string(:collapsed),
+          expanded_html:  raplet_template(:expanded),
+          collapsed_html: raplet_template(:collapsed),
         },
       ],
-      css:  Rails.application.assets.find_asset("#{self.class.short_name}.css"),
-      js:   Rails.application.assets.find_asset("#{self.class.short_name}.js")
+      css:  raplet_asset("#{short_name}.css"),
+      js:   raplet_asset("#{short_name}.js")
     })
   end
 
@@ -41,7 +41,7 @@ class Abseiler::Raplet < Abseiler::AbstractRaplet
     metadata_hash = default_metadata_hash.merge(self.class.metadata_hash)
 
     if lookup_context.template_exists?(:welcome, [short_name])
-      metadata_hash.merge!(welcome_text: render_to_string("#{short_name}/welcome"))
+      metadata_hash.merge!(welcome_text: raplet_template(:welcome))
     end
 
     respond_with(metadata_hash) and return false
@@ -55,4 +55,11 @@ class Abseiler::Raplet < Abseiler::AbstractRaplet
     respond_with({status: 404})
   end
 
+  def raplet_template(symbol)
+    render_to_string("#{short_name}/#{symbol}")
+  end
+
+  def raplet_asset(name)
+    Rails.application.assets.find_asset(name)
+  end
 end
