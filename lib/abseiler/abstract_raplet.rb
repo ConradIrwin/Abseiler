@@ -8,6 +8,7 @@ class Abseiler::AbstractRaplet < ActionController::Metal
     ActionController::HideActions,
     ActionController::Rendering,
     ActionController::Renderers,
+    ActionController::ConditionalGet,
     ActionController::RackDelegation,
     ActionController::Caching,
     ActionController::MimeResponds,

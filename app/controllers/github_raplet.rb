@@ -22,7 +22,7 @@ class GithubRaplet < Abseiler::Raplet
     end
 
     not_found! and return false if @user.blank?
-  rescue ArgumentError
+  rescue ArgumentError, Octopi::NotFound
     not_found! and return false
   end
 
