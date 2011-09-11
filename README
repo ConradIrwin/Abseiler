@@ -1,7 +1,15 @@
 Abseiler
 ========
 
-TODOS:
-------
-* <whatever>
-*
+- /a/:raplet/*
+  AssetPresenter.new(raplet, name)
+  -> uses tilt to compile asset
+
+- /r/:raplet.json?show=metadata
+  MetadataPresenter.new(raplet)
+  -> uses tilt + other stuff to make json
+
+- /r/:raplet.json
+  RapletPresenter.new(raplet, params)
+  -> uses tilt + other stuff to make json
+

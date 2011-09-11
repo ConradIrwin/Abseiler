@@ -1,13 +1,30 @@
-ENV["RAILS_ENV"] = "test"
-require File.expand_path('../../config/environment', __FILE__)
-require 'rails/test_help'
 
-class ActiveSupport::TestCase
-  # Setup all fixtures in test/fixtures/*.(yml|csv) for all tests in alphabetical order.
-  #
-  # Note: You'll currently still have to declare fixtures explicitly in integration tests
-  # -- they do not yet inherit this setting
-  fixtures :all
+ENV["RACK_ENV"] = "test"
 
-  # Add more helper methods to be used by all tests here...
+require "minitest/spec"
+require "minitest/mock"
+require "rack/test"
+require "vcr"
+require 'turn'
+
+require "abseiler"
+
+VCR.config do |c|
+  c.cassette_library_dir = 'test/fixtures/vcr_cassettes'
+  c.stub_with :fakeweb
+end
+
+def new_session
+  Rack::Test::Session.new(Abseiler::App.app)
+end
+
+class TestRaplet < Abseiler::Raplet
+end
+
+def json_parse(object)
+  if object.respond_to? :body
+    JSON.parse(object.body)
+  else
+    JSON.parse(object)
+  end
 end

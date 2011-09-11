@@ -1,0 +1,46 @@
+--- 
+- !ruby/struct:VCR::HTTPInteraction 
+  request: !ruby/struct:VCR::Request 
+    method: :get
+    uri: http://github.com:80/api/v2/json/user/email/sam@lenary.co.uk
+    body: 
+    headers: 
+      accept-encoding: 
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+  response: !ruby/struct:VCR::Response 
+    status: !ruby/struct:VCR::ResponseStatus 
+      code: 200
+      message: OK
+    headers: 
+      server: 
+      - nginx/1.0.4
+      date: 
+      - Thu, 08 Sep 2011 13:07:19 GMT
+      content-type: 
+      - application/json; charset=utf-8
+      transfer-encoding: 
+      - chunked
+      status: 
+      - 200 OK
+      x-ratelimit-limit: 
+      - "60"
+      etag: 
+      - "\"3fdc16a78d1127910c6742576f850e0c\""
+      x-ratelimit-remaining: 
+      - "59"
+      x-runtime: 
+      - 17ms
+      cache-control: 
+      - private, max-age=0, must-revalidate
+      content-encoding: 
+      - gzip
+    body: !binary |
+      H4sIAAAAAAAAA1VQy26DMBD8FeQzDTaY56mXfEHUM1psQ6z6gYxphaL8e9et
+      iNTb7nhmdsYPsm8qkOFBlgBfECGMWpKBVBWHumvVzHrKVCl5J2fJ6rmndVny
+      viE5Ed6u4A4k4+LAKpxuYLOrMdrHmBhBQVRyhIhPJaVdQZuiZBnjQ10PVZO9
+      0ZZSJBovIGrvkHaV2k17WO55dhM+GnASCes+GS3GoFY/Cr87NCzZC170Fk+4
+      a3IyGb+g1T3GdSgKoxyE4yL8Zf9Eq9kb47+1W15GbU5SZ8Zr3uUkHmtq8pG+
+      BS+oYPW2/WZzuzGnXoXt1Fc0FVh0Sv93C3XKgjYIbGDf/wV4Pn8A9Prx7XMB
+      AAA=
+
+    http_version: "1.1"

@@ -1,7 +1,33 @@
 #!/usr/bin/env rake
-# Add your own tasks in files placed in lib/tasks ending in .rake,
-# for example lib/tasks/capistrano.rake, and they will automatically be available to Rake.
+ENV["RACK_ENV"] ||= "development"
 
-require File.expand_path('../config/application', __FILE__)
+require "bundler"
+Bundler.require(:default, ENV["RACK_ENV"].to_sym)
 
-Abseiler::Application.load_tasks
+require "rake/testtask"
+
+Rake::TestTask.new(:test) do |t|
+  t.libs << "test"
+  t.test_files = FileList['test/**/*_test.rb']
+  t.verbose = true
+end
+
+namespace :test do
+  Rake::TestTask.new(:raplets) do |t|
+    t.libs << "test"
+    t.test_files = FileList['test/raplets/*_test.rb']
+    t.verbose = true
+  end
+
+  Rake::TestTask.new(:http) do |t|
+    t.libs << "test"
+    t.test_files = FileList['test/http/*_test.rb']
+    t.verbose = true
+  end
+
+  Rake::TestTask.new(:abseiler) do |t|
+    t.libs << "test"
+    t.test_files = FileList['test/{abseiler,presenters}/*_test.rb']
+    t.verbose = true
+  end
+end

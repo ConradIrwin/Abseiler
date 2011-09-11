@@ -1,0 +1,39 @@
+--- 
+- !ruby/struct:VCR::HTTPInteraction 
+  request: !ruby/struct:VCR::Request 
+    method: :get
+    uri: http://github.com:80/api/v2/json/user/email/nobody@lenary.co.uk
+    body: 
+    headers: 
+      accept-encoding: 
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+  response: !ruby/struct:VCR::Response 
+    status: !ruby/struct:VCR::ResponseStatus 
+      code: 404
+      message: Not Found
+    headers: 
+      server: 
+      - nginx/1.0.4
+      date: 
+      - Thu, 08 Sep 2011 13:07:20 GMT
+      content-type: 
+      - application/json; charset=utf-8
+      transfer-encoding: 
+      - chunked
+      status: 
+      - 404 Not Found
+      x-ratelimit-limit: 
+      - "60"
+      x-ratelimit-remaining: 
+      - "58"
+      x-runtime: 
+      - 6ms
+      cache-control: 
+      - no-cache
+      content-encoding: 
+      - gzip
+    body: !binary |
+      H4sIAAAAAAAAA6tWSi0qyi9SslIKLU4tUsjLL1FIyy/NS1GqBQC0aYoQGgAA
+      AA==
+
+    http_version: "1.1"

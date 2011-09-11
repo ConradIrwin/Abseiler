@@ -1,26 +1,32 @@
 source 'http://rubygems.org'
 
-gem 'rails', '3.1.0.beta1'
+gem "sinatra", :require => false
 
-gem "rack-contrib", :require => 'rack/contrib/jsonp',
+gem "rack-contrib", :require => false,
                     :git => "https://github.com/rack/rack-contrib.git",
                     :branch => "master"
 
-gem "octopi", "~> 0.4.3"
-
 
 # Asset template engines
+gem 'erubis'
 gem 'sass'
 gem 'coffee-script'
-gem 'uglifier'
-gem 'therubyracer-heroku', '0.8.1.pre3'
 
-gem 'jquery-rails'
+gem "faraday", "~> 0.7.4"
 
-group :test do
+gem "rake"
+
+group :development, :test do
+  gem "shotgun"
+
   # Pretty printed test output
   gem 'turn', :require => false
-end
 
-gem "ruby-debug19", :group => [:development, :test]
+  # Web Request Recording
+  gem 'vcr', :require => false
+  gem 'fakeweb', :require => false
+
+  # Rack-Level testing
+  gem 'rack-test', "~> 0.6.1"
+end
 

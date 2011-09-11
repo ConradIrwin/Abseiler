@@ -1,0 +1,14 @@
+<a href="<%= @user.github_url %>" class="github">
+  <img src="<%= @user.avatar_url %>" width=20 height=20>
+  gh: <%= @user.login %>
+</a>
+
+<div class="stats">
+  <div class="num"><%= @user.public_repo_count %></div>
+  <div class="caption">public repos</div>
+</div>
+
+<div class="stats last">
+  <div class="num"><%= @user.followers_count %></div>
+  <div class="caption">followers</div>
+</div>

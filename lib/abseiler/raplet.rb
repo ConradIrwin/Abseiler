@@ -1,65 +1,47 @@
-class Abseiler::Raplet < Abseiler::AbstractRaplet
-  include Abseiler::RapletConfig
+require 'json'
 
-  respond_to :json
+require 'abseiler'
 
-  before_filter :show_metadata, :only => [:raplet]
-  before_filter :find_user,     :only => [:raplet]
-
-
-  # the info action. this is all that is really used...
-  def raplet
-    respond_with({
-      status:200,
-      sections: [
-        {
-          expanded_html:  raplet_template(:expanded),
-          collapsed_html: raplet_template(:collapsed),
-        },
-      ],
-      css:  raplet_asset("#{short_name}.css"),
-      js:   raplet_asset("#{short_name}.js")
-    })
+module Abseiler
+  class NotFound < StandardError
   end
 
-  protected
+  class Raplet
+    extend  RapletConfig
 
-  def show_metadata
-    return true unless params[:show] == "metadata"
+    attr_reader :status
+    attr_reader :templater
 
-    default_metadata_hash = {
-      name:           short_name.capitalize,
-      description:    "",
-      welcome_text:   "",
-      icon_url:       "https://abseiler.heroku.com/assets/#{short_name}/icon.png",
-      small_icon_url: "https://abseiler.heroku.com/assets/#{short_name}/small_icon.png",
-      preview_url:    "https://abseiler.heroku.com/assets/#{short_name}/preview.png",
-      provider_name:  "Lenary",
-      provider_url:   "http://lenary.co.uk/"
-    }
+    def initialize(params)
+      @params = params
+      @templater = Templater.new(self.class.metadata[:short_name])
 
-    metadata_hash = default_metadata_hash.merge(self.class.metadata_hash)
-
-    if lookup_context.template_exists?(:welcome, [short_name])
-      metadata_hash.merge!(welcome_text: raplet_template(:welcome))
+      @status = 404
     end
 
-    respond_with(metadata_hash) and return false
-  end
+    def find_user!
+    end
 
-  def find_user
-    raise NotImplementedError, "Define find_user to set user params"
-  end
+    # def to_hash
+    #   hash = {status: 200}
+    #   hash[:css] = @templater.css
+    #   hash[:js]  = @templater.js
 
-  def not_found!
-    respond_with({status: 404})
-  end
+    #   if @templater.collapsable?
+    #     hash[:sections] = []
+    #     hash[:sections] << {
+    #       expanded_html:  @templater.template(:expanded),
+    #       collapsed_html: @templater.template(:collapsed),
+    #     }
+    #   else
+    #     hash[:html] = @templater.template(:expanded)
+    #   end
 
-  def raplet_template(symbol)
-    render_to_string("#{short_name}/#{symbol}")
-  end
+    #   return hash
+    # end
 
-  def raplet_asset(name)
-    Rails.application.assets.find_asset(name).to_s
+    # def to_json
+    #   to_hash.to_json
+    # end
   end
 end
