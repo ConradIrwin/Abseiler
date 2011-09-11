@@ -43,7 +43,9 @@ module Abseiler
       pass unless params[:show] == "metadata"
 
       raplet_klass = RapletFactory.raplet_class(params[:raplet])
-      MetadataPresenter.new(raplet_klass.metadata).to_json
+      presenter = MetadataPresenter.new(raplet_klass.metadata)
+
+      presenter.to_json
     end
 
     get "/r/:raplet.json" do
@@ -51,7 +53,9 @@ module Abseiler
 
       raplet = RapletFactory.new_raplet(params)
       raplet.find_user!
-      RapletPresenter.new(raplet).to_json
+      presenter = RapletPresenter.new(raplet)
+
+      presenter.to_json
     end
 
     error NotFound do
