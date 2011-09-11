@@ -16,7 +16,6 @@ module Abseiler
 
   autoload :Templater, "abseiler/templater"
 
-  autoload :AssetPresenter,     "abseiler/presenters/asset_presenter"
   autoload :RapletPresenter,    "abseiler/presenters/raplet_presenter"
   autoload :MetadataPresenter,  "abseiler/presenters/metadata_presenter"
 end

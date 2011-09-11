@@ -2,11 +2,27 @@
 # require 'dir'
 
 module Abseiler
-
   class Templater
-
     def initialize(raplet_name)
       @raplet = raplet_name
+    end
+
+    def image_exists?(name)
+      exists?(:image, name)
+    end
+
+    def image_path(name)
+      path(:image, name) if image_exists?(name)
+    end
+
+    private
+
+    def exists?(type, name)
+      File.exists? path(type, name)
+    end
+
+    def path(type, name)
+      Abseiler::App.root + "/raplets/#{@raplet}/#{type}s/#{name}"
     end
 
     # def javascript

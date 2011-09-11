@@ -26,8 +26,16 @@ module Abseiler
       RapletFactory.to_json
     end
 
-    get "/a/:raplet/*" do
-      AssetPresenter.new(params["raplet"], params[:splat]).to_s
+    # for images
+    get "/a/:raplet/*.*" do
+      path, ext = params[:splat]
+      name = "#{path}.#{ext}"
+
+      raplet_klass = RapletFactory.raplet_class(params[:raplet])
+      templater = Templater.new(raplet_klass.metadata[:short_name])
+
+      not_found unless templater.image_exists?(name)
+      send_file templater.image_path(name)
     end
 
     get "/r/:raplet.json" do
