@@ -4,7 +4,7 @@ require "abseiler/raplet/github"
 describe Abseiler::Raplet::Github do
   include Abseiler
 
-  describe ".find!" do
+  describe ".find_user!" do
     it "should find the right github profile" do
       VCR.use_cassette("lenary") do
         raplet = Raplet::Github.new({email: "sam@lenary.co.uk"})
