@@ -30,6 +30,8 @@ module Abseiler
         @gravatar_id = json_hash["gravatar_id"]
       end
 
+      # presenter
+
       def avatar_url
         "https://secure.gravatar.com/avatar/#{@gravatar_id}?s=140&amp;d=https://github.com%2Fimages%2Fgravatars%2Fgravatar-140.png"
       end

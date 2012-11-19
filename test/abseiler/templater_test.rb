@@ -24,4 +24,12 @@ describe Abseiler::Templater do
       path.must_equal nil
     end
   end
+
+  describe "assets" do
+
+  end
+
+  describe "templates" do
+
+  end
 end
